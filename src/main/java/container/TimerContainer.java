@@ -22,9 +22,9 @@ public class TimerContainer implements Container{
         timers.entrySet()
                 .forEach(entrySet -> {
                     Timer tempTimer = entrySet.getValue();
-                    timers.remove(tempTimer.getName());
                     tempTimer.stopTimer();
                 });
+        timers.clear();
     }
 
     @Override
