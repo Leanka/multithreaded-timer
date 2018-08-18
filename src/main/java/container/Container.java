@@ -6,4 +6,5 @@ public interface Container {
     void addTimer(Timer timer);
     Timer getTimer(String name);
     void closeAllTimers();
+    boolean isNameAvailable(String name);
 }
