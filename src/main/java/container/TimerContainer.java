@@ -24,6 +24,6 @@ public class TimerContainer implements Container{
 
     @Override
     public boolean isNameAvailable(String name) {
-        return false;
+        return !timers.containsKey(name);
     }
 }
