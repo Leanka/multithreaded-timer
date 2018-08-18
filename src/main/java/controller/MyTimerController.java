@@ -9,7 +9,7 @@ public class MyTimerController implements TimerController {
     }
 
     public void stopTimer(Timer timer) {
-
+        timer.stopTimer();
     }
 
     public void pauseTimer(Timer timer) {
