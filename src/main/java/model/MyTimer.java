@@ -36,7 +36,22 @@ public class MyTimer extends Thread implements Timer{
         }
     }
 
+    public synchronized void pauseTimer(){
+        if(!this.isAlive()){
+            return;
+        }
 
+        this.isThreadSuspended = !this.isThreadSuspended;
+        if(!this.isThreadSuspended){
+            long stopPause = System.currentTimeMillis();
+            this.totalPauseCountInMillis += stopPause - startPause;
+
+            startPause = 0;
+            notify();
+        }else{
+            startPause = System.currentTimeMillis();
+        }
+    }
 
     private long getTimerValue(){
         long timerEndValue;
