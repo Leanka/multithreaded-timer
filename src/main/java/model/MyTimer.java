@@ -11,5 +11,22 @@ public class MyTimer extends Thread implements Timer{
         super(name);
     }
 
+    @Override
+    public void run(){
+        while(true){
+            try {
+                Thread.sleep(1000);
+                synchronized (this){
+                    while (isThreadSuspended){
+                        wait();
+                    }
+                }
 
+            } catch (InterruptedException e) {
+                break; //quit if interrupted
+            }
+        }
+    }
+
+    
 }
