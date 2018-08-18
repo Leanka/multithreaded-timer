@@ -1,4 +1,7 @@
 package model;
 
-public interface Timer {
+public interface Timer extends Runnable{
+    void pauseTimer();
+    void stopTimer();
+
 }
