@@ -2,6 +2,11 @@ package timer;
 
 import model.Timer;
 
-public interface TimerFactory {
-    Timer getTimer(String name);
+public class TimerFactory{
+
+    private TimerFactory(){}
+
+    public static Timer getTimer(String name) {
+        return null;
+    }
 }
