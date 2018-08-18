@@ -1,4 +1,22 @@
 package controller;
 
-public class MyTimerController {
+import model.Timer;
+
+public class MyTimerController implements TimerController {
+    
+    public void startTimer(Timer timer) {
+
+    }
+
+    public void stopTimer(Timer timer) {
+
+    }
+
+    public void pauseTimer(Timer timer) {
+
+    }
+
+    public void restartTimer(Timer timer) {
+
+    }
 }
