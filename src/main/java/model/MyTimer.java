@@ -28,6 +28,15 @@ public class MyTimer extends Thread implements Timer{
         }
     }
 
+    public void stopTimer(){
+        this.interrupt();
+        this.endTime = System.currentTimeMillis();
+        if(this.isThreadSuspended){
+            pauseTimer();
+        }
+    }
+
+
 
     private long getTimerValue(){
         long timerEndValue;
