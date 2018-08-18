@@ -1,7 +1,8 @@
 package model;
 
-public interface Timer extends Runnable{
+public interface Timer{
     void pauseTimer();
     void stopTimer();
-
+    void start();
+    String getName();
 }
