@@ -19,7 +19,12 @@ public class TimerContainer implements Container{
 
     @Override
     public void closeAllTimers() {
-
+        timers.entrySet()
+                .forEach(entrySet -> {
+                    Timer tempTimer = entrySet.getValue();
+                    timers.remove(tempTimer.getName());
+                    tempTimer.stopTimer();
+                });
     }
 
     @Override
