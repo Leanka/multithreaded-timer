@@ -28,5 +28,16 @@ public class MyTimer extends Thread implements Timer{
         }
     }
 
-    
+
+    private long getTimerValue(){
+        long timerEndValue;
+        if(this.isAlive()){
+            timerEndValue = System.currentTimeMillis();
+        }else {
+            timerEndValue = this.endTime;
+        }
+        return (timerEndValue - this.startTime - this.totalPauseCountInMillis)/1000;
+    }
+
+
 }
