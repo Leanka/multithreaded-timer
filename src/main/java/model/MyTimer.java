@@ -29,11 +29,14 @@ public class MyTimer extends Thread implements Timer{
     }
 
     public void stopTimer(){
-        this.interrupt();
-        this.endTime = System.currentTimeMillis();
-        if(this.isThreadSuspended){
-            pauseTimer();
+        if(this.isAlive()){
+            this.interrupt();
+            this.endTime = System.currentTimeMillis();
+            if(this.isThreadSuspended){
+                pauseTimer();
+            }
         }
+
     }
 
     public synchronized void pauseTimer(){
