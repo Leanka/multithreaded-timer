@@ -39,5 +39,16 @@ public class MyTimer extends Thread implements Timer{
         return (timerEndValue - this.startTime - this.totalPauseCountInMillis)/1000;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder("Name: ");
+        builder
+                .append(this.getName())
+                .append(", Thread ID: ")
+                .append(this.getId())
+                .append(", seconds: ")
+                .append(this.getTimerValue());
 
+        return builder.toString();
+    }
 }
