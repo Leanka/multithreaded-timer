@@ -1,12 +1,13 @@
 package timer;
 
+import model.MyTimer;
 import model.Timer;
 
-public class TimerFactory{
+public final class TimerFactory{
 
     private TimerFactory(){}
 
     public static Timer getTimer(String name) {
-        return null;
+        return new MyTimer(name);
     }
 }
