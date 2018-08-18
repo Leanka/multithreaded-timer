@@ -1,5 +1,6 @@
 package controller;
 
+import model.MyTimer;
 import model.Timer;
 
 public class MyTimerController implements TimerController {
@@ -17,6 +18,7 @@ public class MyTimerController implements TimerController {
     }
 
     public void restartTimer(Timer timer) {
-
+        timer = new MyTimer(timer.getName());
+        timer.start();
     }
 }
