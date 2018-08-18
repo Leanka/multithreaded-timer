@@ -9,7 +9,7 @@ public class TimerContainer implements Container{
 
     @Override
     public void addTimer(Timer timer) {
-
+        timers.put(timer.getName(), timer);
     }
 
     @Override
