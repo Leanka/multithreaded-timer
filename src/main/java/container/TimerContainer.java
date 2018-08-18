@@ -14,7 +14,7 @@ public class TimerContainer implements Container{
 
     @Override
     public Timer getTimer(String name) {
-        return null;
+        return timers.get(name);
     }
 
     @Override
