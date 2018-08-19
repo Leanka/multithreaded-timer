@@ -4,16 +4,16 @@ import container.Container;
 import controller.TimerController;
 import model.Timer;
 import timer.TimerFactory;
-import view.TimerView;
+import view.View;
 
 import java.util.Arrays;
 
 public class MyTimerOption implements TimerOption{
     private TimerController controller;
     private Container container;
-    private TimerView view;
+    private View view;
 
-    public MyTimerOption(TimerController controller, Container timerContainer, TimerView view) {
+    public MyTimerOption(TimerController controller, Container timerContainer, View view) {
         this.controller = controller;
         this.container = timerContainer;
         this.view = view;
@@ -45,7 +45,7 @@ public class MyTimerOption implements TimerOption{
             timer.start();
             container.addTimer(timer);
         }else {
-            view.printWarning(String.format("Timer \"%s\" already exists. Chose different name!"));
+            this.restartTimer(name);
         }
 
     }
@@ -96,8 +96,7 @@ public class MyTimerOption implements TimerOption{
         }
     }
 
-    @Override
-    public void restartTimer(String name) {
+    private void restartTimer(String name) {
         if(!container.isNameAvailable(name)){
             Timer timer = container.getTimer(name);
             controller.stopTimer(timer); //in case it was not stopped before
