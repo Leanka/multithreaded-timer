@@ -38,6 +38,22 @@ public class MyTimerOption implements TimerOption{
 
     @Override
     public void pauseTimer(String name) {
+        if(container.isNameAvailable(name)){
+            Timer timer = container.getTimer(name);
+            if(timer.isStopped()){
+                view.printWarning("Cannot pause stopped timer!");
+            }else if(timer.isPaused()){
+                view.printWarning("Cannot pause paused timer!");
+            }else {
+                controller.pauseTimer(timer);
+            }
+        }else{
+            view.printWarning(String.format("No such timer as \"%s\"!"));
+        }
+    }
+
+    @Override
+    public void unpauseTimer(String name) {
 
     }
 
