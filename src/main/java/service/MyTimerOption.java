@@ -32,8 +32,17 @@ public class MyTimerOption implements TimerOption{
     }
 
     @Override
-    public void stopTimer(String string) {
-
+    public void stopTimer(String name) {
+        if(!container.isNameAvailable(name)){
+            Timer timer = container.getTimer(name);
+            if(timer.isStopped()){
+                view.printWarning(String.format("Timer \"%s\" is already stopped!", name));
+            }else {
+                controller.stopTimer(timer);
+            }
+        }else {
+            view.printWarning(String.format("No such timer as \"%s\"!", name));
+        }
     }
 
     @Override
