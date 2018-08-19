@@ -3,6 +3,7 @@ package service;
 import container.Container;
 import controller.TimerController;
 import model.Timer;
+import timer.TimerFactory;
 import view.TimerView;
 
 public class MyTimerOption implements TimerOption{
@@ -28,8 +29,15 @@ public class MyTimerOption implements TimerOption{
 
     @Override
     public void startTimer(String name) {
+        if(container.isNameAvailable(name)){
+            Timer timer = TimerFactory.getTimer(name);
+            timer.start();
+            container.addTimer(timer);
+        }else {
+            view.printWarning(String.format("Timer \"%s\" already exists. Chose different name!"));
+        }
 
-    }
+        }
 
     @Override
     public void stopTimer(String name) {
