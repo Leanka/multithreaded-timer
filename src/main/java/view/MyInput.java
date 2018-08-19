@@ -13,12 +13,13 @@ public class MyInput implements Input {
         String [] inputWords;
 
         try {
+            System.out.print(": ");
             input = reader.readLine().replaceAll("\\s+", " ").trim();
+            System.out.println();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        System.out.println("input: " + input);
         if(input.isEmpty()){
             inputWords = new String[0];
         }else {
