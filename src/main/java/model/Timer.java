@@ -6,4 +6,5 @@ public interface Timer{
     void start();
     String getName();
     boolean isStopped();
+    boolean isPaused();
 }
