@@ -3,7 +3,6 @@ package model;
 public class MyTimer extends Thread implements Timer{
     private final long startTime = System.currentTimeMillis();
     private long endTime = 0;
-    private long startPause;
     private long totalPauseCountInMillis = 0;
     private volatile boolean isThreadSuspended = false;
 
@@ -50,19 +49,15 @@ public class MyTimer extends Thread implements Timer{
     }
 
     public synchronized void pauseTimer(){
-        if(!this.isAlive()){
-            return;
-        }
-
         this.isThreadSuspended = !this.isThreadSuspended;
         if(!this.isThreadSuspended){
             long stopPause = System.currentTimeMillis();
-            this.totalPauseCountInMillis += stopPause - startPause;
+            this.totalPauseCountInMillis += stopPause - endTime;
 
-            startPause = 0;
+            endTime = 0;
             notify();
         }else{
-            startPause = System.currentTimeMillis();
+            endTime = System.currentTimeMillis();
         }
     }
 
@@ -70,10 +65,17 @@ public class MyTimer extends Thread implements Timer{
         long timerEndValue;
         if(this.isAlive()){
             timerEndValue = System.currentTimeMillis();
+            if(this.isThreadSuspended){
+                timerEndValue -= getCurrentPauseValue();
+            }
         }else {
             timerEndValue = this.endTime;
         }
         return (timerEndValue - this.startTime - this.totalPauseCountInMillis)/1000;
+    }
+
+    private long getCurrentPauseValue(){
+        return System.currentTimeMillis() - this.endTime;
     }
 
     @Override
