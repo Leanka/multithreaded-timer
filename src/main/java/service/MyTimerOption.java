@@ -6,6 +6,8 @@ import model.Timer;
 import timer.TimerFactory;
 import view.TimerView;
 
+import java.util.Arrays;
+
 public class MyTimerOption implements TimerOption{
     private TimerController controller;
     private Container container;
@@ -19,7 +21,12 @@ public class MyTimerOption implements TimerOption{
 
     @Override
     public void showAllTimers() {
-
+        Timer [] timers = container.getAllTimers();
+        if(timers.length == 0){
+            view.printWarning("There are no timers yet!");
+        }else{
+            Arrays.stream(timers).forEach(view::printTimer);
+        }
     }
 
     @Override
