@@ -66,7 +66,7 @@ public class MyTimerOption implements TimerOption{
 
     @Override
     public void pauseTimer(String name) {
-        if(container.isNameAvailable(name)){
+        if(!container.isNameAvailable(name)){
             Timer timer = container.getTimer(name);
             if(timer.isStopped()){
                 view.printWarning("Cannot pause stopped timer!");
@@ -82,7 +82,7 @@ public class MyTimerOption implements TimerOption{
 
     @Override
     public void unpauseTimer(String name) {
-        if(container.isNameAvailable(name)){
+        if(!container.isNameAvailable(name)){
             Timer timer = container.getTimer(name);
             if(timer.isStopped()){
                 view.printWarning("Cannot unpause stopped timer!");
@@ -109,5 +109,10 @@ public class MyTimerOption implements TimerOption{
     @Override
     public void terminateTimers() {
         container.terminateAllTimers();
+    }
+
+    @Override
+    public void showProgramOptions() {
+        System.out.println("options to be implemented\n");
     }
 }
