@@ -48,13 +48,24 @@ public class MyTimerOption implements TimerOption{
                 controller.pauseTimer(timer);
             }
         }else{
-            view.printWarning(String.format("No such timer as \"%s\"!"));
+            view.printWarning(String.format("No such timer as \"%s\"!", name));
         }
     }
 
     @Override
     public void unpauseTimer(String name) {
-
+        if(container.isNameAvailable(name)){
+            Timer timer = container.getTimer(name);
+            if(timer.isStopped()){
+                view.printWarning("Cannot unpause stopped timer!");
+            }else if(!timer.isPaused()){
+                view.printWarning("Cannot unpause unpaused timer!");
+            }else {
+                controller.pauseTimer(timer);
+            }
+        }else{
+            view.printWarning(String.format("No such timer as \"%s\"!", name));
+        }
     }
 
     @Override
@@ -64,7 +75,7 @@ public class MyTimerOption implements TimerOption{
             controller.stopTimer(timer); //in case it was not stopped before
             controller.restartTimer(timer);
         }else {
-            view.printWarning(String.format("No such timer as \"%s\"!"));
+            view.printWarning(String.format("No such timer as \"%s\"!", name));
         }
     }
 
