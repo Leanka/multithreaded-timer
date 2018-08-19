@@ -24,7 +24,11 @@ public class MyTimerOption implements TimerOption{
 
     @Override
     public void showTimer(String name) {
-
+        if(!container.isNameAvailable(name)){
+            view.printTimer(container.getTimer(name));
+        }else{
+            view.printWarning(String.format("No such timer as \"%s\"!", name));
+        }
     }
 
     @Override
@@ -37,7 +41,7 @@ public class MyTimerOption implements TimerOption{
             view.printWarning(String.format("Timer \"%s\" already exists. Chose different name!"));
         }
 
-        }
+    }
 
     @Override
     public void stopTimer(String name) {
