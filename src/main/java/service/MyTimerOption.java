@@ -2,6 +2,7 @@ package service;
 
 import container.Container;
 import controller.TimerController;
+import model.Timer;
 import view.TimerView;
 
 public class MyTimerOption implements TimerOption{
@@ -42,7 +43,13 @@ public class MyTimerOption implements TimerOption{
 
     @Override
     public void restartTimer(String name) {
-
+        if(!container.isNameAvailable(name)){
+            Timer timer = container.getTimer(name);
+            controller.stopTimer(timer); //in case it was not stopped before
+            controller.restartTimer(timer);
+        }else {
+            view.printWarning(String.format("No such timer as \"%s\"!"));
+        }
     }
 
     @Override
