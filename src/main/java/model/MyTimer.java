@@ -39,6 +39,11 @@ public class MyTimer extends Thread implements Timer{
 
     }
 
+    @Override
+    public boolean isStopped() {
+        return !this.isAlive();
+    }
+
     public synchronized void pauseTimer(){
         if(!this.isAlive()){
             return;
