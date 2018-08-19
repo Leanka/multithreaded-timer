@@ -1,6 +1,5 @@
 package service;
 
-
 import view.Input;
 import view.View;
 
@@ -28,7 +27,7 @@ public class MyTimerService implements TimerService{
                 try{
                     this.programOptions(userInput);
                 }catch (IndexOutOfBoundsException e){
-                    view.printWarning(String.format("Timer name for option \"%s\" is required!%n", userInput[commandIndex]));
+                    view.printWarning(String.format("Timer name for option \"%s\" is required!", userInput[commandIndex]));
                 }
             }else {
                 option.showProgramOptions();
@@ -62,7 +61,7 @@ public class MyTimerService implements TimerService{
                 }
                 break;
             default:
-                view.printWarning(String.format("Option \"%s\" is not available.%n"));
+                view.printWarning(String.format("Option \"%s\" is not available.", userInput[commandIndex]));
                 option.showProgramOptions();
         }
     }
