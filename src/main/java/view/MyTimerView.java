@@ -34,4 +34,9 @@ public class MyTimerView implements TimerView {
     public void printTimer(Timer timer) {
         System.out.println(timer);
     }
+
+    @Override
+    public void printWarning(String warning) {
+        System.err.println(warning);
+    }
 }
