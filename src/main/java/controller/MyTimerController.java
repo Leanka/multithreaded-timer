@@ -17,8 +17,4 @@ public class MyTimerController implements TimerController {
         timer.pauseTimer();
     }
 
-    public void restartTimer(Timer timer) {
-        timer = TimerFactory.getTimer(timer.getName());
-        timer.start();
-    }
 }
