@@ -2,10 +2,11 @@ package container;
 
 import model.Timer;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class TimerContainer implements Container{
-    Map <String, Timer> timers = new HashMap <>();
+    private Map <String, Timer> timers = new HashMap <>();
 
     @Override
     public void addTimer(Timer timer) {
@@ -25,6 +26,11 @@ public class TimerContainer implements Container{
                     tempTimer.stopTimer();
                 });
         timers.clear();
+    }
+
+    @Override
+    public Timer [] getAllTimers() {
+        return this.timers.values().toArray(new Timer[this.timers.size()]);
     }
 
     @Override
