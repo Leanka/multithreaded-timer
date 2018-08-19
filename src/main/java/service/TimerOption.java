@@ -8,4 +8,5 @@ public interface TimerOption {
     void pauseTimer(String name);
     void unpauseTimer(String name);
     void terminateTimers();
+    void showProgramOptions();
 }
