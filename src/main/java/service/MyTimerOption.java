@@ -42,7 +42,7 @@ public class MyTimerOption implements TimerOption{
     public void startTimer(String name) {
         if(container.isNameAvailable(name)){
             Timer timer = TimerFactory.getTimer(name);
-            timer.start();
+            controller.startTimer(timer);
             container.addTimer(timer);
         }else {
             this.restartTimer(name);
@@ -98,9 +98,12 @@ public class MyTimerOption implements TimerOption{
 
     private void restartTimer(String name) {
         if(!container.isNameAvailable(name)){
-            Timer timer = container.getTimer(name);
-            controller.stopTimer(timer); //in case it was not stopped before
-            controller.restartTimer(timer);
+            Timer oldTimer = container.getTimer(name);
+            controller.stopTimer(oldTimer); //in case it was not stopped before
+
+            Timer newTimer = TimerFactory.getTimer(oldTimer.getName());
+            controller.startTimer(newTimer);
+            container.addTimer(newTimer);
         }else {
             view.printWarning(String.format("No such timer as \"%s\"!", name));
         }
