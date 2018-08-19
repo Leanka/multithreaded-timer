@@ -88,6 +88,12 @@ public class MyTimer extends Thread implements Timer{
                 .append(", seconds: ")
                 .append(this.getTimerValue());
 
+        if(this.isStopped()){
+            builder.append(" STOPPED");
+        }else if(this.isPaused()){
+            builder.append(" PAUSED");
+        }
+
         return builder.toString();
     }
 }
