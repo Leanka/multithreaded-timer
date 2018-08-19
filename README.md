@@ -20,5 +20,10 @@ Checking a timer prints information about the timer itself: it's name, it's thre
 
     Use Threads or Runnables.
     Use interrupt.
-    Commit your work into a Git repository and submit your repo's URL.
+    Commit your work into a Git repository
 
+## How to run
+Project can be opened in terminam using:
+
+- Maven: ` mvn clean compile exec:java ` from pom.xml directory
+- IntelliJ: Run Application class
