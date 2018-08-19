@@ -116,6 +116,18 @@ public class MyTimerOption implements TimerOption{
 
     @Override
     public void showProgramOptions() {
-        System.out.println("options to be implemented\n");
+        String [] options = {
+                "Available options for timer:",
+                String.format("  %-20s : %s", "start timerName", "Starts new timer/Restarts existing timer"),
+                String.format("  %-20s : %s", "pause timerName", "Pauses timer"),
+                String.format("  %-20s : %s", "unpause timerName", "Unpauses timer"),
+                String.format("  %-20s : %s", "stop timerName", "Stops timer"),
+                String.format("  %-20s : %s", "check timerName", "Shows timer details"),
+                String.format("  %-20s : %s", "check", "Shows all timers details"),
+                String.format("  %-20s : %s", "exit", "Exits program"),
+                ""
+        };
+
+        Arrays.stream(options).forEach(view::printMessage);
     }
 }
