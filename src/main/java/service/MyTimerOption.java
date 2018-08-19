@@ -124,6 +124,7 @@ public class MyTimerOption implements TimerOption{
                 String.format("  %-20s : %s", "stop timerName", "Stops timer"),
                 String.format("  %-20s : %s", "check timerName", "Shows timer details"),
                 String.format("  %-20s : %s", "check", "Shows all timers details"),
+                String.format("  %-20s : %s", "threads", "Shows currently running threads"),
                 String.format("  %-20s : %s", "exit", "Exits program"),
                 ""
         };
