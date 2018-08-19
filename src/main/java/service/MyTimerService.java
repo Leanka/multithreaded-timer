@@ -40,6 +40,7 @@ public class MyTimerService implements TimerService{
             case "EXIT":
                 option.terminateTimers();
                 this.isProgramRunning = false;
+                showCurrentThreads();
                 break;
             case "START":
                 option.startTimer(userInput[timerNameIndex]);
@@ -60,10 +61,29 @@ public class MyTimerService implements TimerService{
                     option.showTimer(userInput[timerNameIndex]);
                 }
                 break;
+            case "THREADS":
+                showCurrentThreads();
+                break;
             default:
                 view.printWarning(String.format("Option \"%s\" is not available.", userInput[commandIndex]));
                 option.showProgramOptions();
         }
+    }
+
+    private void showCurrentThreads(){
+        System.out.println("Currently running threads:");
+        System.out.println(String.format("%-3s  %-20s  %-8s  %-10s", "ID", "NAME", "PRIORITY", "STATE"));
+        Thread.getAllStackTraces()
+                .keySet()
+                .forEach(thread -> view.printMessage(
+                        String.format("%-3d  %-20s  %-8d  %-10s",
+                                                    thread.getId(),
+                                                    thread.getName(),
+                                                    thread.getPriority(),
+                                                    thread.getState()
+                        )
+                    )
+                );
     }
 
 }
