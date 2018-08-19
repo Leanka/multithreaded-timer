@@ -13,7 +13,7 @@ public class MyInput implements Input {
         String [] inputWords;
 
         try {
-            System.out.print(": ");
+            System.out.print("\n: ");
             input = reader.readLine().replaceAll("\\s+", " ").trim();
             System.out.println();
         } catch (IOException e) {
