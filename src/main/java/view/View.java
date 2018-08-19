@@ -2,8 +2,7 @@ package view;
 
 import model.Timer;
 
-public interface TimerView {
-    String [] getInput();
+public interface View {
     void printTimer(Timer timer);
     void printWarning(String warning);
 }

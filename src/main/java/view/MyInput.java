@@ -1,12 +1,10 @@
 package view;
 
-import model.Timer;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class MyTimerView implements TimerView {
+public class MyInput implements Input {
 
     @Override
     public String[] getInput() {
@@ -28,15 +26,5 @@ public class MyTimerView implements TimerView {
         }
 
         return inputWords;
-    }
-
-    @Override
-    public void printTimer(Timer timer) {
-        System.out.println(timer);
-    }
-
-    @Override
-    public void printWarning(String warning) {
-        System.err.println(warning);
     }
 }
