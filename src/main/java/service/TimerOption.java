@@ -7,6 +7,5 @@ public interface TimerOption {
     void stopTimer(String name);
     void pauseTimer(String name);
     void unpauseTimer(String name);
-    void restartTimer(String name);
     void terminateTimers();
 }
